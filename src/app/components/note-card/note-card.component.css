@@ -1,0 +1,63 @@
+.note-card {
+  width: 400px;
+  background-color: lightyellow;
+  border: 3px solid #000022;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.2s;
+
+  .card-title {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  [type="checkbox"] {
+    transform: scale(2) translateX(-2px);
+  }
+}
+.note-card:hover {
+  border: 3px solid black;
+  box-shadow: 0 0 10px;
+}
+
+.note-card:has(input:checked) {
+  border: 3px solid lightgrey;
+  background-color: lightgray;
+
+  .card-title {
+    font-weight: 100;
+  }
+}
+.btn-delete {
+  width: 30px;
+  height: 30px;
+  font-size: 1.5rem;
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.btn-edit {
+  width: 60px;
+  height: 30px;
+  font-size: 1.5rem;
+  background-color: grey;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.error {
+  max-width: 100%;
+  background-color: white;
+  border: 2px solid #e74c3c;
+  color: #c0392b;
+  padding: 12px 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}

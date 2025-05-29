@@ -1,0 +1,30 @@
+<form #form="ngForm" class="note-form" (ngSubmit)="handleSubmit()">
+  <input
+    type="text"
+    class="note-title"
+    placeholder="Nueva tarea"
+    name="newNote"
+    required
+    minlength="1"
+    maxlength="24"
+    [(ngModel)]="noteTitle"
+    (ngModelChange)="noteTitle = noteTitle.trimStart().slice(0, 24)"
+    #noteInput="ngModel"
+  />
+
+  <button class="create-btn" [disabled]="form.invalid">+</button>
+</form>
+
+<!-- Me dio pereza armar el form en el ts :) -->
+<p class="error" *ngIf="noteInput.touched && noteInput.errors?.['required']">
+  ⚠️ El título es obligatorio.
+</p>
+
+<p class="error" *ngIf="noteInput.touched && noteInput.errors?.['minlength']">
+  ⚠️ Mínimo 1 carácter requerido.
+</p>
+
+<p class="error" *ngIf="noteInput.touched && noteTitle.length === 24">
+  ⚠️ Tenés el máximo de caracteres permitidos. En caso de superarlo se
+  recortará.
+</p>

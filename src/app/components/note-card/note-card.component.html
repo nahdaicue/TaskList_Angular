@@ -1,0 +1,31 @@
+<article class="note-card">
+  <input
+    type="text"
+    class="card-title"
+    [value]="note()?.title"
+    maxlength="24"
+    minlength="1"
+    [(ngModel)]="note()!.title"
+    #titleInput="ngModel"
+    (ngModelChange)="note()!.title = note()!.title.trimStart().slice(0, 24)"
+    (input)="updateTitle(note()?.id, $event)"
+  />
+  <input
+    type="checkbox"
+    [checked]="note()?.marked"
+    (input)="updateMarked(note()?.id)"
+  />
+  <button type="button" class="btn-edit" [disabled]="note()?.title!.trim().length === 0"
+ (click)="saveNote()">Edit</button>
+  <button type="button" class="btn-delete" (click)="deleteNote(note()?.id!)">
+    X
+  </button>
+</article>
+
+<p class="error" *ngIf="note()?.title?.length! < 1">
+  ⚠️ Mínimo 1 carácter requerido.
+</p>
+<p class="error" *ngIf="note()?.title?.length === 24 && titleInput.touched">
+  ⚠️ Tenés el máximo de caracteres permitidos. En caso de superarlo se
+  recortará.
+</p>

@@ -1,0 +1,52 @@
+.note-form {
+  width: 400px;
+  background-color: white;
+  border: 3px solid darkblue;
+  padding: 20px 30px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.2s;
+
+  .note-title {
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .create-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+    background-color: green;
+    color: white;
+    display: flex;
+    align-items: center;
+  }
+
+  .create-btn:hover {
+    background-color: darkgreen;
+  }
+
+  .create-btn:active {
+    background-color: green;
+  }
+}
+
+.note-form:hover {
+  border: 3px solid black;
+  box-shadow: 0 0 10px;
+}
+
+.error {
+  max-width: 100%;
+  background-color: white;
+  border: 2px solid #e74c3c;
+  color: #c0392b;
+  padding: 12px 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
