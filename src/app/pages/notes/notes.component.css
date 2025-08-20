@@ -1,23 +1,17 @@
-#notes-pages {
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Estilo para el input de texto dentro de una tarjeta. */
+input.form-control {
+  font-size: 1.1rem;
+}
 
-  .title {
-    margin-bottom: 50px;
-    text-align: center;
-  }
+/* Efecto para la tarjeta cuando está marcada.
+   Cambia el fondo y tacha el texto. */
+.card:has(input:checked) {
+  background-color: #f8f9fa; /* Fondo más claro */
+  border: 1px solid #ced4da; /* Borde más suave */
+}
 
-  .note-list {
-    background-image: url("/assets/cork.jpg");
-    border: 10px solid brown;
-    width: 70%;
-    min-width: 450px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
+.card:has(input:checked) input.form-control {
+  text-decoration: line-through;
+  color: #6c757d; /* Color de texto gris */
+  font-weight: normal; /* Vuelve a peso normal */
 }

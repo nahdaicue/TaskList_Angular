@@ -1,23 +1,37 @@
 <app-header></app-header>
+<div class="container my-5">
+  <h2 class="text-center mb-4">Mis Notas</h2>
+  <app-create-note (createNote)="onNoteCreated($event)"></app-create-note>
 
-<section id="notes-pages">
-  <h2>Notes</h2>
-
-  @if (hasError) {
-    <h2>No se han podido cargar las notas.</h2>
-    <p>API no disponible en este momento</p>
-  } @else if (isLoading) {
-    <h2>Cargando...</h2>
-  } @else {
-    <ul class="note-list">
-      <li>
-        <app-create-note></app-create-note>
-      </li>
-      @for (note of noteServices.notes; track note.id) {
+  <div class="row justify-content-center">
+    @if (hasError) {
+    <div class="col-12 text-center mt-4">
+      <div class="alert alert-danger" role="alert">
+        <h4>No se han podido cargar las notas.</h4>
+        <p>Por favor, intenta de nuevo más tarde.</p>
+      </div>
+    </div>
+    } @else if (isLoading) {
+    <div class="col-12 text-center mt-4">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando notas...</span>
+      </div>
+      <p class="mt-2">Cargando notas...</p>
+    </div>
+    } @else {
+    <div class="col-lg-8 col-md-10">
+      <ul class="list-unstyled mt-4">
+        @for (note of noteService.notes; track note.id) {
         <li>
-          <app-note-card [note]="note"></app-note-card>
+          <app-note-card
+            [note]="note"
+            (updateNote)="onUpdateNote($event)"
+            (deleteNote)="onDeleteNote($event)"
+          ></app-note-card>
         </li>
-      }
-    </ul>
-  }
-</section>
+        }
+      </ul>
+    </div>
+    }
+  </div>
+</div>

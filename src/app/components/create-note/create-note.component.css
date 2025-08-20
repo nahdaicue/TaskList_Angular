@@ -1,52 +1,18 @@
-.note-form {
-  width: 400px;
-  background-color: white;
-  border: 3px solid darkblue;
-  padding: 20px 30px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-  transition: all 0.2s;
-
-  .note-title {
-    background-color: transparent;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-
-  .create-btn {
-    width: 30px;
-    height: 30px;
-    font-size: 1.5rem;
-    background-color: green;
-    color: white;
-    display: flex;
-    align-items: center;
-  }
-
-  .create-btn:hover {
-    background-color: darkgreen;
-  }
-
-  .create-btn:active {
-    background-color: green;
-  }
+/* Este estilo se aplica al contenedor del formulario, replicando el efecto
+   de hover del diseño original. */
+.input-group:hover {
+  border: 1px solid #ced4da; /* Borde más suave */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
-.note-form:hover {
-  border: 3px solid black;
-  box-shadow: 0 0 10px;
+/* El botón ya tiene efectos de hover y active gracias a Bootstrap,
+   pero si quieres un color específico, puedes sobrescribirlo. */
+.btn-success {
+  background-color: green;
 }
-
-.error {
-  max-width: 100%;
-  background-color: white;
-  border: 2px solid #e74c3c;
-  color: #c0392b;
-  padding: 12px 20px;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  font-size: 14px;
-  text-align: center;
+.btn-success:hover {
+  background-color: darkgreen;
+}
+.btn-success:active {
+  background-color: green;
 }

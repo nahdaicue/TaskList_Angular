@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import Note from '../../../models/Note';
 import { NoteService } from '../../services/note.service';
 import { CommonModule } from '@angular/common';
+import { NoteRequest } from '../../../models/NoteRequest';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-create-note',
@@ -13,49 +14,26 @@ import { CommonModule } from '@angular/common';
 export class CreateNoteComponent {
   //Variables
   noteTitle: string = '';
+  isCreating = false; //Está sin implementar.
+  createNote = output<NoteRequest>();
 
   //Constructor
   constructor(public noteService: NoteService) {}
 
-  handleSubmit = () => {
-    if (!this.noteTitle) return; //valida vacio
+  handleSubmit = (): void => {
+    const trimmedTitle = this.noteTitle.trim();
 
-    this.noteTitle = this.noteTitle.trim(); //valida caracter en blanco
-    if(this.noteTitle.length === 0){ 
-      this.noteTitle = '';
+    if (!trimmedTitle || this.isCreating) {
+      this.noteTitle = trimmedTitle ? trimmedTitle : '';
+      return;
     }
 
-    const newNote: Note = {
-      id: this.noteService.createId(),
-      title: this.noteTitle,
+    this.createNote.emit({
+      title: trimmedTitle,
       marked: false,
-    };
+    });
 
-    this.createNote(newNote);
+    this.noteTitle = '';
   };
 
-  //CREATE
-  createNote(newNote: Note) {
-    this.noteService.createNote(newNote).subscribe({
-      next: () => {
-        this.getNotes();
-        this.noteTitle = '';
-      },
-      error: (e) => {
-        console.log('error de createNote en create-note', e);
-      },
-    });
-  }
-
-  //GET
-  getNotes() {
-    this.noteService.getNotes().subscribe({
-      next: (data) => {
-        this.noteService.notes = data.reverse(); //Para que aprescan arriba
-      },
-      error: (e) => {
-        console.log('Error en getNotes');
-      },
-    });
-  }
 }

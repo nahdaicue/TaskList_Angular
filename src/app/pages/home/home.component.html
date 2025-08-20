@@ -1,2 +1,108 @@
 <app-header></app-header>
-<p>home works!</p>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <!-- Card principal -->
+      <div class="card shadow-sm border-0">
+        <div class="card-body text-center py-5">
+          <!-- Título principal -->
+          <h1 class="card-title h2 mb-3 text-dark">
+            ¡Gracias por probar este proyecto!
+          </h1>
+
+          <!-- Descripción -->
+          <p class="card-text text-muted mb-4">
+            Este es un gestor de notas desarrollado con
+            <strong>Angular</strong> y <strong>Spring Boot</strong>. Para
+            comenzar a usar la aplicación, haz clic en
+            <strong>"Notes"</strong> en el menú superior o en el siguiente
+            botón.
+          </p>
+
+          <!-- Botón principal -->
+          <div class="mb-4">
+            <button class="btn btn-primary btn-lg" routerLink="/notes">
+              Comenzar
+            </button>
+          </div>
+
+          <!-- Separador -->
+          <hr class="my-4" />
+
+          <!-- Características simples -->
+          <div class="row text-start">
+            <div class="col-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-plus-circle text-success me-2"></i>
+                <small class="text-muted">Crear notas</small>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-edit text-warning me-2"></i>
+                <small class="text-muted">Editar notas</small>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fas fa-trash text-danger me-2"></i>
+                <small class="text-muted">Eliminar notas</small>
+              </div>
+            </div>
+            <div class="col-6 mb-3">
+              <div class="d-flex align-items-center">
+                <i class="fa-solid fa-check me-2"></i>
+                <small class="text-muted">Marcar completas</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tech stack -->
+          <div class="mt-4">
+            <small class="text-muted">
+              <strong>Hecho con:</strong> Angular + Spring Boot
+            </small>
+
+            <!-- Mensaje del repositorio complementario -->
+            <div class="alert alert-info py-2 px-3 mb-3" role="alert">
+              <i class="fas fa-info-circle me-2"></i>
+              <small>
+                <strong>Backend:</strong> El API REST de Spring Boot que
+                complementa este proyecto está disponible en
+                <a
+                  href="https://github.com/nahdaicue/TaskList_SpringBoot"
+                  target="_blank"
+                  class="alert-link"
+                >
+                  este repositorio
+                  <i class="fas fa-external-link-alt fa-sm"></i>
+                </a>
+              </small>
+            </div>
+            <!-- Social Links -->
+            <div class="d-flex justify-content-center gap-3">
+              <a
+                href="https://www.linkedin.com/in/nahuel-cuello/"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <i
+                  class="bi bi-linkedin text-primary fs-4"
+                  title="LinkedIn"
+                ></i>
+              </a>
+              <a
+                href="https://github.com/nahdaicue"
+                target="_blank"
+                class="text-decoration-none"
+              >
+                <i class="bi bi-github text-dark fs-4" title="GitHub"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

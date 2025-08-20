@@ -1,30 +1,52 @@
-<form #form="ngForm" class="note-form" (ngSubmit)="handleSubmit()">
-  <input
-    type="text"
-    class="note-title"
-    placeholder="Nueva tarea"
-    name="newNote"
-    required
-    minlength="1"
-    maxlength="24"
-    [(ngModel)]="noteTitle"
-    (ngModelChange)="noteTitle = noteTitle.trimStart().slice(0, 24)"
-    #noteInput="ngModel"
-  />
+<form #form="ngForm" (ngSubmit)="handleSubmit()">
+  <div class="input-group mb-3 shadow-sm">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nueva tarea"
+      aria-label="Nueva tarea"
+      name="newNote"
+      required
+      minlength="1"
+      maxlength="59"
+      [(ngModel)]="noteTitle"
+      (ngModelChange)="noteTitle = noteTitle.trimStart().slice(0, 59)"
+      #noteInput="ngModel"
+    />
 
-  <button class="create-btn" [disabled]="form.invalid">+</button>
+    <button
+      class="btn btn-success"
+      type="submit"
+      [disabled]="form.invalid || isCreating"
+    >
+      @if (isCreating) {
+      <span class="spinner-border spinner-border-sm me-2"></span>
+      ⏳ Creando... } @else { Agregar Nota }
+    </button>
+  </div>
+  <!-- Prueba -->
+  @if (isCreating) {
+  <small class="text-muted"> ⏳ Guardando tu nota... </small>
+  }
 </form>
 
-<!-- Me dio pereza armar el form en el ts :) -->
-<p class="error" *ngIf="noteInput.touched && noteInput.errors?.['required']">
+<div
+  class="alert alert-danger"
+  *ngIf="noteInput.touched && noteInput.errors?.['required']"
+>
   ⚠️ El título es obligatorio.
-</p>
+</div>
 
-<p class="error" *ngIf="noteInput.touched && noteInput.errors?.['minlength']">
+<div
+  class="alert alert-warning"
+  *ngIf="noteInput.touched && noteInput.errors?.['minlength']"
+>
   ⚠️ Mínimo 1 carácter requerido.
-</p>
+</div>
 
-<p class="error" *ngIf="noteInput.touched && noteTitle.length === 24">
-  ⚠️ Tenés el máximo de caracteres permitidos. En caso de superarlo se
-  recortará.
-</p>
+<div
+  class="alert alert-info"
+  *ngIf="noteInput.touched && noteTitle.length === 59"
+>
+  ⚠️ Tenés el máximo de caracteres permitidos.
+</div>
